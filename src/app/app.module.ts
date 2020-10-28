@@ -6,6 +6,7 @@ import { HomeComponent } from './app/home/home.component';
 import { AtaqueComponent } from './app/ataque/ataque.component';
 import { CadastroComponent } from './app/cadastro/cadastro.component';
 import { SharedModule } from './shared/shared.module';
+import { FieldDirective } from './field.directive';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     AtaqueComponent,
     CadastroComponent,
+    FieldDirective,
   ],
   imports: [
     BrowserModule,
