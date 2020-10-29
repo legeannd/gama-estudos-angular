@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 class Personas {
   classe: string;
@@ -11,7 +12,12 @@ class Personas {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  valoresCadastro;
+  ngOnInit(): void {
+    this.valoresCadastro = JSON.parse(localStorage.getItem('cadastro'));
+    console.log(this.valoresCadastro)
+  }
   result = 0;
   inputText = ''
   cadastro = {
@@ -59,5 +65,14 @@ export class AppComponent {
 
   favoritar(index) {
     this.personas[index].favoritado = !this.personas[index].favoritado;
+  }
+
+  salvar(formCadastro: NgForm) {
+    if(formCadastro.invalid) {
+      formCadastro.control.markAllAsTouched();
+    } else {
+      localStorage.setItem('cadastro', JSON.stringify(formCadastro.value));
+      formCadastro.control.reset();
+    }
   }
 }

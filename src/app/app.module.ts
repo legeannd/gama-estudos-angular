@@ -7,6 +7,7 @@ import { AtaqueComponent } from './app/ataque/ataque.component';
 import { CadastroComponent } from './app/cadastro/cadastro.component';
 import { SharedModule } from './shared/shared.module';
 import { FieldDirective } from './field.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FieldDirective } from './field.directive';
   ],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
