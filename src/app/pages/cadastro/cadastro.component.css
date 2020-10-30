@@ -1,8 +1,5 @@
-.red{
- color: red;
-}
-.hide{
-  display: none;
+.demo-list-action {
+  width: 300px;
 }
 
 .hide {
@@ -28,10 +25,6 @@ margin-top: 10px;
   justify-content: left;
 }
 
-#contact{
-  diplay: flex;
-
-}
 
 
 .mdl-button {
@@ -57,23 +50,4 @@ margin-top: 10px;
 
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
-}
-
-
-#mycard {
-  height: 600px;
-  width:100%;
- display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.mdl-textfield {
-  width: 250px;
-  margin-right: 10px;
-}
-
-.violet {
-    color: blueviolet;
 }

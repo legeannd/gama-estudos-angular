@@ -2,25 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './app/home/home.component';
-import { AtaqueComponent } from './app/ataque/ataque.component';
-import { CadastroComponent } from './app/cadastro/cadastro.component';
-import { SharedModule } from './shared/shared.module';
 import { FieldDirective } from './field.directive';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule)
+  },
+  {
+    path: 'ataque',
+    loadChildren: () => import('./pages/ataque/ataque.module').then(m => m.AtaquesModule)
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AtaqueComponent,
-    CadastroComponent,
     FieldDirective,
   ],
   imports: [
     BrowserModule,
     SharedModule,
-    FormsModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
