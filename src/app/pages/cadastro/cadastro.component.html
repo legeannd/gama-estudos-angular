@@ -35,6 +35,16 @@
             </div>
           </div>
 
+          <mat-checkbox id="katchup" (changeEvent)="selectedSauce($event)" >
+            Katchup
+          </mat-checkbox>
+          <mat-checkbox id="maionese" (changeEvent)="selectedSauce($event)" >
+            Maionese
+          </mat-checkbox>
+          <mat-checkbox id="mostarda" (changeEvent)="selectedSauce($event)" >
+            Mostarda
+          </mat-checkbox>
+
           <div id="email">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input #nivel="ngModel" [(ngModel)]="cadastro.nivel" name="nivel" class="mdl-textfield__input" type="text" required>
@@ -55,3 +65,5 @@
       </button>
     </div>
 </form>
+
+<card-personagem [dados]="cardPersonagem" (change)="editarPersonagem($event)" ></card-personagem>
