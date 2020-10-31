@@ -1,14 +1,14 @@
-<h2>Cadastro</h2>
+<!-- <h2>Cadastro</h2>
 <form #formCadastro="ngForm" id="mycard" (ngSubmit)="salvar(formCadastro)">
   <div class="demo-card-wide mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Contact details</h2>
     </div>
 
-    <div class="mdl-card__supporting-text">
+    <div class="mdl-card__supporting-text"> -->
       <!-- First, tell us how to get in touch with you! -->
 
-        <div id="name">
+<!--         <div id="name">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input #nome="ngModel" [(ngModel)]="cadastro.nome" name="nome" class="mdl-textfield__input" type="text" id="nome" required>
             <label class="mdl-textfield__label" for="nome">Nome</label>
@@ -56,14 +56,92 @@
         </div>
     </div>
 
-    </div>
+    </div> -->
 
     <!-- FAB button with ripple -->
-    <div id="next">
+<!--     <div id="next">
       <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
         <i class="material-icons">arrow_forward</i>
       </button>
     </div>
 </form>
+ -->
+
+ <h2>Cadastro</h2>
+<form [formGroup]="formCadastroLogin" id="mycard">
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Contact details</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <!-- First, tell us how to get in touch with you! -->
+
+        <div id="name">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input formControName="nome" name="nome" class="mdl-textfield__input" type="text" id="nome" required>
+            <label class="mdl-textfield__label" for="nome">Nome</label>
+            <span class="mdl-textfield__error">Nome é obrigatório</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input formControlName="classe" name="classe"  class="mdl-textfield__input" type="text" id="classe" required>
+            <label class="mdl-textfield__label" for="classe">Classe</label>
+            <span class="mdl-textfield__error">Classe é obrigatório</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input formControlName="raca" name="raca" class="mdl-textfield__input" type="text" id="raca" required>
+            <label class="mdl-textfield__label" for="raca">Raça</label>
+            <span class="mdl-textfield__error">Raça é obrigatório</span>
+          </div>
+        </div>
+
+        <div id="contact">
+          <div id="phone">
+            <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"> -->
+              <input formControlName="telefone" name="telefone" type="text" id="telefone">
+              <label for="telefone">Telefone</label>
+              <span *ngIf="formCadastroLogin.get('telefone').errors?.pattern">O telefone precisa ter 8 ou 9 dígitos</span>
+            <!-- </div> -->
+          </div>
+
+          <mat-checkbox id="katchup" (changeEvent)="selectedSauce($event)" >
+            Katchup
+          </mat-checkbox>
+          <mat-checkbox id="maionese" (changeEvent)="selectedSauce($event)" >
+            Maionese
+          </mat-checkbox>
+          <mat-checkbox id="mostarda" (changeEvent)="selectedSauce($event)" >
+            Mostarda
+          </mat-checkbox>
+
+          <div id="email">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input formControlName="nivel" name="nivel" class="mdl-textfield__input" type="text" required>
+
+              <label class="mdl-textfield__label" for="nivel">Nível</label>
+              <span class="mdl-textfield__error">Nível é obrigatório</span>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- FAB button with ripple -->
+    <div id="next">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" (click)="acessar()">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </div>
+</form>
+
+<!-- <form [formGroup]="formCadastroLogin">
+  <label for="email">Email</label>
+  <input type="text" id="email" formControlName="email" required />
+
+  <label for="telefone">Telefone</label>
+  <input type="text" id="telefone" formControlName="telefone">
+  <button (click)="acessar()">Acessar</button>
+</form> -->
 
 <card-personagem [dados]="cardPersonagem" (change)="editarPersonagem($event)" ></card-personagem>

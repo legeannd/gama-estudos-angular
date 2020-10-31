@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PersonagemService } from './personagem.service';
 
 @Component({
   selector: 'card-personagem',
@@ -6,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./personagem.component.css']
 })
 export class PersonagemComponent {
+
   @Input() dados;
   @Output() change = new EventEmitter();
 
