@@ -2,17 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionDTO } from '../../core/ActionDTO';
 import { TitlePageService } from '../../core/title.service';
 import { HomeService } from './home.service';
-import { Personas } from './interfaces/personas.interface';
-
-export interface DragonActionList {
-  actions: Array<DragonListInfo>
-}
-
-export interface DragonListInfo{
-  favorited: boolean
-  desc: string;
-  name: string;
-}
+import { DragonListInfo } from './interfaces/dragonlist.interface';
 
 export interface CEPData {
   bairro: string;
@@ -45,9 +35,12 @@ export class HomeComponent implements OnInit {
   search = "";
 
   ngOnInit() {
-    /* this.homeService.getDragonData().subscribe((list: DragonActionList) => {
-      this.personas = list.actions.map(action => new ActionDTO(action));
-    }); */
+    this.homeService.getDragonData().subscribe(
+      (list: Array<DragonListInfo>) => {
+        this.personas = list.map(action => new ActionDTO(action));
+      },
+      (error) => alert(error)
+    );
   }
 
   favoritar(index: number) {

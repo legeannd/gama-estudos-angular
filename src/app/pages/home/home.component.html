@@ -3,8 +3,8 @@
   <li class="mdl-list__item" *ngFor="let persona of personas; let i = index">
     <span class="mdl-list__item-primary-content">
       <i class="material-icons mdl-list__item-avatar">person</i>
-      <span>{{persona.nome}}</span>
-      <p>{{persona.descricao}}</p>
+      <span>{{persona.nome | uppercase}}</span>
+      <p>{{persona.descricao | xablau}}</p>
     </span>
     <a class="mdl-list__item-secondary-action" [ngClass]="{'violet': persona.favoritado}" href="#" (click)="favoritar(i)"><i class="material-icons">star</i></a>
   </li>
